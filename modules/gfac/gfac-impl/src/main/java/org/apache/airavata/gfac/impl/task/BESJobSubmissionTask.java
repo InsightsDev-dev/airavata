@@ -151,10 +151,9 @@ public class BESJobSubmissionTask implements JobSubmissionTask {
             jobDetails.setProcessId(taskContext.getProcessId());
             FactoryClient factory = new FactoryClient(eprt, secProperties);
 
-            log.info(String.format("Activity Submitting to %s ... \n",
-                    factoryUrl));
+            log.info("Activity Submitting to {} ... \n", factoryUrl);
             CreateActivityResponseDocument response = factory.createActivity(cad);
-            log.info(String.format("Activity Submitted to %s \n", factoryUrl));
+            log.info("Activity Submitted to {} \n", factoryUrl);
 
             EndpointReferenceType activityEpr = response.getCreateActivityResponse().getActivityIdentifier();
 
@@ -356,7 +355,7 @@ public class BESJobSubmissionTask implements JobSubmissionTask {
     }
 
     protected String formatStatusMessage(String activityUrl, String status) {
-        return String.format("Activity %s is %s.\n", activityUrl, status);
+        return String.format("Activity {} is {}.\n", activityUrl, status);
     }
 
     protected void waitUntilDone(EndpointReferenceType factoryEpr, EndpointReferenceType activityEpr, ProcessContext processContext, DefaultClientConfiguration secProperties) throws Exception {
